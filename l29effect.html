@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Effect</title>
+
+	<style type="text/css">
+		
+		body{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			flex-direction: column;
+		}
+
+		.container{
+			width: 900px;
+			background-color: #f4f4f4;
+			padding: 20px;
+			display: flex;
+		}
+
+		.box{
+			width: 150px;
+			height: 300px;
+
+			color: #fff;
+			font-size: 20px;
+			text-align: center;
+			line-height: 300px;
+			border-radius: 5px;
+
+			margin: 0 10px;
+			transition: all 0.3s;
+		}
+
+		.box:hover{
+			opacity: 0.8;
+			font-size: 30px;
+		}
+
+		.square1{
+			background-color: green;
+		}
+
+		.square2{
+			background-color: orange;
+		}
+
+		.square3{
+			background-color: blue;
+		}
+
+		.square4{
+			background-color: violet;
+		}
+
+		.square5{
+			background-color: brown;
+		}
+
+		.btn{
+			padding: 15px;
+			margin: 5px 0;
+			border: 1px solid #999;
+			border-radius: 15px;
+			transition: all 0.3s;
+		}
+
+		.btn:hover{
+			color: #fff;
+			background-color: steelblue;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		
+		<div class="box square1">1</div>
+		<div class="box square2">2</div>
+		<div class="box square3">3</div>
+		<div class="box square4">4</div>
+		<div class="box square5">5</div>
+	</div>
+
+	<div class="control">
+		<button type="button" id="hidebtn" class="btn">Hide</button>
+		<button type="button" id="showbtn" class="btn">Show</button>
+		<button type="button" id="tgbtn" class="btn">Toggle</button>
+
+		<button type="button" id="foutbtn" class="btn">fadeOut</button>
+		<button type="button" id="fibtn" class="btn">fadeIn</button>
+		<button type="button" id="ftgbtn" class="btn">fadeToggle</button>
+		<button type="button" id="ftobtn" class="btn">fadeTo</button>
+
+		<button type="button" id="slupbtn" class="btn">SlideUp</button>
+		<button type="button" id="sldbtn" class="btn">Slide Down</button>
+		<button type="button" id="sltgbtn" class="btn">Slide Toggle</button>
+
+		<button type="button" id="anibtn" class="btn">Animate</button>
+		<button type="button" id="dlybtn" class="btn">Delay</button>
+
+		<button type="button" id="clickmebtn" class="btn">ClickMe</button>
+		<button type="button" id="stopbtn" class="btn">Stop</button>
+		<button type="button" id="stoptruebtn" class="btn">Stop(true)</button>
+		<button type="button" id="finishbtn" class="btn">Finished</button>
+
+		<button type="button" id="dqbtn" class="btn">Dequeue</button>
+		<button type="button" id="cqbtn" class="btn">clearQueue</button>
+
+
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			// console.log("hi");
+
+
+		// hide()
+		// $(selector).hide();
+		// $(selector).hide(speed);
+		// $(selector).hide(speed,function);
+
+		$("#hidebtn").click(function(){
+			// $(".square1").hide();
+			// $(".square1,.square3").hide();
+
+			$(".box").even().hide();
+			// $(".box").odd().hide();
+
+			// $(".square1").hide(1000);
+			// $(".square1").hide("slow");
+
+			// $(".square1").hide(1000,function(){
+			// 	$(".square2,.square3").hide(1500,function(){
+			// 		$(".square4,.square5").hide(1000);
+			// 	});
+			// })
+		});
+
+		// show()
+		// $(selector).show();
+		// $(selector).show(speed);
+		// $(selector).show(speed,function);
+
+		$("#showbtn").click(function(){
+			// $(".square1").show();
+			// $(".square1,.square3").show();
+
+			$(".box").even().show();
+			// $(".box").odd().show();
+
+			// $(".square1").show(1000);
+			// $(".square1").show("slow");
+
+			// $(".square1").show(1000,function(){
+			// 	$(".square2,.square3").show(1500,function(){
+			// 		$(".square4,.square5").show(1000);
+			// 	});
+			// })
+		});
+
+		// toggle()
+		// $(selector).toggle();
+		// $(selector).toggle(speed);
+		// $(selector).toggle(speed,function);
+
+		$("#tgbtn").click(function(){
+			// $(".square1").toggle();
+			// $(".square1,.square3").toggle();
+
+			$(".box").even().toggle(1000);
+			// $(".box").odd().toggle();
+
+			// $(".square1").toggle(1000);
+			// $(".square1").toggle("slow");
+
+			// $(".square1").toggle(1000,function(){
+			// 	$(".square2,.square3").toggle(1500,function(){
+			// 		$(".square4,.square5").toggle(1000);
+			// 	});
+			// })
+		});
+//------------------------------------------------------------------
+
+		// fadeOut()
+		// $(selector).fadeOut();
+		// $(selector).fadeOut(speed);
+		// $(selector).fadeOut(speed,function);
+
+		$("#foutbtn").click(function(){
+			// $(".square1").fadeOut();
+			// $(".square1,.square3").fadeOut();
+
+			$(".box").even().fadeOut(1000);
+			// $(".box").odd().fadeOut();
+
+			// $(".square1").fadeOut(1000);
+			// $(".square1").fadeOut("slow");
+
+			// $(".square1").fadeOut(1000,function(){
+			// 	$(".square2,.square3").fadeOut(1500,function(){
+			// 		$(".square4,.square5").fadeOut(1000);
+			// 	});
+			// })
+		});
+
+		// fadeIn()
+		// $(selector).fadeIn();
+		// $(selector).fadeIn(speed);
+		// $(selector).fadeIn(speed,function);
+
+		$("#fibtn").click(function(){
+			// $(".square1").fadeIn();
+			// $(".square1,.square3").fadeIn();
+
+			$(".box").even().fadeIn(1000);
+			// $(".box").odd().fadeIn();
+
+			// $(".square1").fadeIn(1000);
+			// $(".square1").fadeIn("slow");
+
+			// $(".square1").fadeIn(1000,function(){
+			// 	$(".square2,.square3").fadeIn(1500,function(){
+			// 		$(".square4,.square5").fadeIn(1000);
+			// 	});
+			// })
+		});
+
+		// fadeToggle()
+		// $(selector).fadeToggle();
+		// $(selector).fadeToggle(speed);
+		// $(selector).fadeToggle(speed,function);
+
+		$("#ftgbtn").click(function(){
+			// $(".square1").fadeToggle();
+			// $(".square1,.square3").fadeToggle();
+
+			$(".box").even().fadeToggle(1000);
+			// $(".box").odd().fadeToggle();
+
+			// $(".square1").fadeToggle(1000);
+			// $(".square1").fadeToggle("slow");
+
+			// $(".square1").fadeToggle(1000,function(){
+			// 	$(".square2,.square3").fadeToggle(1500,function(){
+			// 		$(".square4,.square5").fadeToggle(1000);
+			// 	});
+			// })
+		});
+
+		// fadeTo()
+		// $(selector).fadeTo();
+		// $(selector).fadeTo(speed);
+		// $(selector).fadeTo(speed,function);
+
+		$("#ftobtn").click(function(){
+			// $(".square1").fadeTo();
+			// $(".square1,.square3").fadeTo();
+
+			$(".box").even().fadeTo(1000,0.5);
+			// $(".box").odd().fadeTo();
+
+			// $(".square1").fadeTo(1000);
+			// $(".square1").fadeTo("slow");
+
+			// $(".square1").fadeTo(1000,function(){
+			// 	$(".square2,.square3").fadeTo(1500,function(){
+			// 		$(".square4,.square5").fadeTo(1000);
+			// 	});
+			// })
+		});
+
+//------------------------------------------------------------------------
+
+		// slideUp()
+		// $(selector).slideUp();
+		// $(selector).slideUp(speed);
+		// $(selector).slideUp(speed,function);
+
+		$("#slupbtn").click(function(){
+			// $(".square1").slideUp();
+			// $(".square1,.square3").slideUp();
+
+			$(".box").even().slideUp(1000);
+			// $(".box").odd().slideUp();
+
+			// $(".square1").slideUp(1000);
+			// $(".square1").slideUp("slow");
+
+			// $(".square1").slideUp(1000,function(){
+			// 	$(".square2,.square3").slideUp(1500,function(){
+			// 		$(".square4,.square5").slideUp(1000);
+			// 	});
+			// })
+		});
+
+		// slideDown()
+		// $(selector).slideDown();
+		// $(selector).slideDown(speed);
+		// $(selector).slideDown(speed,function);
+
+		$("#sldbtn").click(function(){
+			// $(".square1").slideDown();
+			// $(".square1,.square3").slideDown();
+
+			$(".box").even().slideDown(1000);
+			// $(".box").odd().slideDown();
+
+			// $(".square1").slideDown(1000);
+			// $(".square1").slideDown("slow");
+
+			// $(".square1").slideDown(1000,function(){
+			// 	$(".square2,.square3").slideDown(1500,function(){
+			// 		$(".square4,.square5").slideDown(1000);
+			// 	});
+			// })
+		});
+
+		// slideToggle()
+		// $(selector).slideToggle();
+		// $(selector).slideToggle(speed);
+		// $(selector).slideToggle(speed,function);
+
+		$("#sltgbtn").click(function(){
+			// $(".square1").slideToggle();
+			// $(".square1,.square3").slideToggle();
+
+			$(".box").even().slideToggle(1000);
+			// $(".box").odd().slideToggle();
+
+			// $(".square1").slideToggle(1000);
+			// $(".square1").slideToggle("slow");
+
+			// $(".square1").slideToggle(1000,function(){
+			// 	$(".square2,.square3").slideToggle(1500,function(){
+			// 		$(".square4,.square5").slideToggle(1000);
+			// 	});
+			// })
+		});
+
+//-------------------------------------------------------------------------
+
+		// animate()
+		// $(selector).animate(params);
+		// $(selector).animate(params,speed);
+		// $(selector).animate(params,speed,function);
+
+		$("#anibtn").click(function(){
+			// $(".square1").animate({height:"50%"});
+			// $(".square1,.square3").animate({height:"50%"});
+
+			// $(".box").even().animate({height:"50%"});
+			// $(".box").odd().animate();
+
+			// $(".square1").animate({height:"50%"},1000);
+			$(".square1").animate({height:"50%"},"slow");
+
+			$(".square1").animate(1000,function(){
+				$(".square2,.square3").animate({height:"50%"},1000)
+			});
+		});
+//---------------------------------------------------------------------------
+
+
+		//delay(speed) and queue
+
+		$("#dlybtn").click(function(){
+
+			// $(".square1").delay("slow").fadeOut(2000);
+
+			// $(".square1").delay(2000).slideUp(2000);
+
+			// $(".square1").delay("fast").slideUp(2000);
+
+
+			// $(".square1").delay(3000).css({
+			// 	height:"10px"
+			// })
+		
+
+
+		// queue()
+ 
+		var sq1 = $(".square1");
+		sq1.animate({height:100},"slow");
+		sq1.animate({height:200},"slow");
+		sq1.animate({height:200},"slow");
+		sq1.animate({height:300},"slow");
+		sq1.animate({height:300},"slow");
+		sq1.animate({height:150},"slow");
+
+		console.log(sq1.queue());
+		console.log(sq1.queue().length);
+		});
+
+
+		$("#clickmebtn").click(function(){
+			$(".square1").html("<i>I am ready to start now!</i>").animate({width:500},2000)
+			$(".square1").html("<i>I am ready to start now!</i>").animate({width:100},2000)
+		});
+
+		// stop() stop(true)
+
+		$("#stopbtn").click(function(){
+			$(".square1").stop();
+		});
+
+		$("#stoptruebtn").click(function(){
+			$(".square1").stop(true);
+		});
+
+		$("#finishbtn").click(function(){
+			$(".square1").finish();
+		});
+
+		//dequeue
+
+		$("#dqbtn").click(function(){
+
+			var div5 = $(".square5")
+
+			// div5.animate({width:300,height:300},"slow");
+			// div5.animate({width:200,height:200},"slow");
+
+			// div5.animate({width:300,height:300},"slow");
+			// div5.animate({width:200,height:200},"slow");
+			// div5.css("background","steelblue");
+
+			div5.animate({width:300,height:300},"slow");
+			div5.animate({width:200,height:200},"slow");
+			div5.queue(function(){
+				div5.css("background","steelblue");
+				div5.dequeue();
+			})
+			div5.slideUp("slow");
+			div5.slideDown("slow");
+
+			console.log("Total queue = ", div5.queue().length);
+		});
+
+		//clearqueue
+
+		$("#cqbtn").click(function(){
+
+			$(".square5").clearQueue();
+
+			$(".square1").clearQueue();
+		})
+
+
+
+
+	});
+
+
+	</script>
+</body>
+</html>

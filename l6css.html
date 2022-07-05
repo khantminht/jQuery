@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css Method</title>
+</head>
+<body>
+
+	<h1>Hello Thailand</h1>
+	<h2>Hello Thailand</h2>
+	<h3>Hello Thailand</h3>
+
+	<button type="button">Change new color</button>
+
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+
+			$("button").click(function(){
+				// console.log('jya');
+
+
+				// css method	proterty	value
+			$("h1").css("background-color","red");
+
+			$("h2,h3").css("background-color",'green');
+
+			$("h3").css({
+				"background":"blue",
+				"font-family":"Arial",
+				"color":"#fff"
+			});
+
+
+			});		
+
+
+
+
+		});
+	</script>
+</body>
+</html>

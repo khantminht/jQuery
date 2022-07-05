@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UI datepicker Method</title>
+
+	<!-- jQueryui css1 js1 -->
+	<link href="./libs/jquery-ui-1.13.1/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+		
+		*{
+			box-sizing: border-box;
+			margin: 0;
+			transition: all 0.3s;
+		}
+
+		body{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container{
+			width: 400px;
+			background-color: #f4f4f4;
+			border-radius: 5px;
+			box-shadow: 0 5px 10px #999;
+
+			padding: 20px 30px;
+		}
+
+		.heading{
+			text-align: center;
+		}
+
+		.heading h2{
+			color: steelblue;
+			margin-top: 15px;
+			margin-bottom: 0;
+		}
+
+		.heading h2:hover{
+			transform: scale(1.15);
+		}
+
+		.heading h2:active{
+			transform: scale(1);
+		}
+
+		.heading h2 span{
+			color: red;
+			font-size: 35px;
+		}
+
+		.heading p{
+			color: steelblue;
+			font-size: 18px;
+			font-style: italic;
+			margin-top: 5px;
+			margin-bottom: 30px;
+		}
+
+		.form-group{
+			margin: 10px 0;
+
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.form-group label{
+		
+			font-size: 20px;
+			letter-spacing: 0.5px;
+
+			margin-right: 30px;
+			margin-bottom: 5px;
+		}
+
+		.form-group label .start{
+			color: steelblue;
+			font-weight: bolder;
+		}
+
+		.form-group label .end{
+			color: red;
+			font-weight: bolder;
+		}
+
+		.form-control{
+			width: 50%;
+			font-family: "Time-New-Roman";
+			font-size: 20px;
+			text-align: center;
+			background-color: #f4f4f4;
+			
+			border: none;
+			border-bottom: 1px dashed #555;
+			outline: none;
+
+			margin-bottom: 20px;
+		}
+
+		.form-control:hover{
+			transform: scale(1.1);
+		}
+
+		.button{
+			display: flex;
+			justify-content: end;
+		}
+
+		.btn{
+			font-size: 17px;
+            padding: 5px 10px;
+            background: none;
+            border: 1px solid #999;
+            border-radius: 8px;
+
+            margin: 0 5px;
+        }
+
+        .btn:hover{
+        	color: #fff;
+        	background-color: steelblue;
+        	border: 1px solid #555;
+            border-radius: 15px;
+
+            transform: scale(1.15);
+        }
+
+        .btn:active{
+            transform: scale(1);
+        }
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="heading">
+			<h2>Hotel <span> Shwe LaThar</span></h2>
+			<p>let us give U the true pleasure!</p>	
+		</div>
+
+		<form action="" method="">
+			
+			<div class="form-group">
+				<label for="arrival"><span>Arrival</span> Date : </label>
+				<input type="text" name="arrival" id="arrival" class="form-control" readonly />
+			</div>
+
+			<div class="form-group">
+				<label for="bookingstart">Booking <span class="start">Start </span>: </label>
+				<input type="text" name="bookingstart" id="bookingstart" class="form-control" readonly />
+			</div>
+
+			<div class="form-group">
+				<label for="bookingend">Booking <span class="end">End </span>: </label>
+				<input type="text" name="bookingend" id="bookingend" class="form-control" readonly />
+			</div>
+
+			<div class="button">
+				<button type="button" class="btn">Submit</button>
+			</div>
+
+		</form>
+
+	</div>
+	
+
+
+	<!-- jquery js1 -->
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+	<!-- jquery ui css1 js1 -->
+	<script src="./libs/jquery-ui-1.13.1/jquery-ui.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			// console.log("hi");
+
+
+			$("#arrival").datepicker({
+				numberOfMonths:1,
+				// numberOfMonths:[2,4],
+
+				showAnim:"slideDown",
+				hideAnim:"slideUp",
+
+				// duration:2000,
+				// duration:"slow",
+
+				dayNamesMin:["Sun","Mon","Tue","Wed","Thus","Fri","Sat"],
+
+				dateFormat:"dd MM, yy",
+
+				// changeMonth:true,
+				// changeYear:true,
+
+				// minDate:0, 	//start from todaay Idx:0
+				// maxDate:5
+
+				// minDate:"07/07/2022", 	
+				// maxDate:"08/08/2022"
+			});
+
+			$("#bookingstart").datepicker({
+				numberOfMonths:1,
+
+				showAnim:"slideDown",
+
+				dateFormat:"dd MM, yy",
+
+				onClose:function(selectdate){
+					$("#bookingend").datepicker("option","minDate",selectdate);
+				}
+			});
+
+			$("#bookingend").datepicker({
+				numberOfMonths:1,
+
+				showAnim:"slideDown",
+
+				dateFormat:"dd MM, yy",
+
+				onClose:function(selectdate){
+					$("#bookingstart").datepicker("option","maxDate",selectdate);
+				}
+			});
+
+
+
+
+		});
+
+	</script>
+
+</body>
+</html>

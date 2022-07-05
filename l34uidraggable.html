@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UI draggable Method</title>
+
+	<!-- jQueryui css1 js1 -->
+	<link href="./libs/jquery-ui-1.13.1/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+
+		body{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container{
+			width: 900px;
+			height: 700px;
+			background-color: #f4f4f4;
+			box-shadow: 2px 5px 10px #999;
+		}
+		
+		.box{
+			width: 250px;
+			height: 150px;
+			color: #fff;
+			background-color: steelblue;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+		
+		<div id="dragme" class="box">
+			<p>Drag Me Whereever you what !!!</p>
+		</div>
+
+		<div id="dragmeonx" class="box">
+			<p>Drag Me on X !!!</p>
+		</div>
+
+		<div id="dragmeony" class="box">
+			<p>Drag Me on Y !!!</p>
+		</div>
+
+		<div id="dragmeoncnt" class="box">
+			<p>Drag Me on container only !!!</p>
+		</div>
+
+	</div>
+
+
+
+
+
+	<!-- jquery js1 -->
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+	<!-- jquery ui js1 -->
+	<script src="./libs/jquery-ui-1.13.1/jquery-ui.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			// console.log("hay");
+
+			// $("#dragme").draggable();
+
+			// $("#dragme").draggable({
+			// 	cursor:"grab",
+			// 	// cursor:"crosshair"
+			// 	// cursor:"move"
+			// });
+
+			$("#dragmeonx").draggable({
+				axis:"x"
+			});
+
+			$("#dragmeony").draggable({
+				axis:"y"
+			});
+
+			$("#dragmeoncnt").draggable({
+				containment:".container"
+			});
+
+			// $("#dragme,#dragmeoncnt").draggable({
+			// 	cancel:"#dragme,#dragmeoncnt"
+			// });
+
+
+			$("#dragme").draggable({
+				start:function(){
+					$(this).css("background","violet");
+				},
+
+				drag:function(){
+					$(this).text("i am moving! Fck Off!!");
+				},
+
+				stop:function(){
+					$(this).text("i am stop here u left me")
+				},
+
+				// revert:true,
+				// revertDuration:2000,
+
+				revert:function(){
+					$(this).css("background","orange");
+					return true;
+				},
+
+				// X and Y
+				// grid:[0,100]
+				// grid:[100,0]
+				grid:[100,50]
+
+			});
+
+
+		});
+
+	</script>
+
+</body>
+<html>

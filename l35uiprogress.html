@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UI progress method</title>
+
+	<!-- jQueryui css1 js1 -->
+	<link href="./libs/jquery-ui-1.13.1/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+		
+		body{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container{
+			width: 700px;			
+		}
+
+		#progress2{
+			position: relative;
+		}
+
+		.progresslabel{
+			position: absolute;
+			left: 70%;
+			top: 50%;
+
+			transform: translate(-90%,-50%);
+		}
+
+	</style>
+</head>
+
+<body>
+	
+	<div class="container">
+		
+		<h1>HTML</h1>
+		<div id="progress1"></div>
+
+		<h1>CSS</h1>
+		<div id="progress2"><span class="progresslabel">20%</span></div>
+
+		<h1>jQuery</h1>
+		<div id="progress3"></div>
+
+		<h1>JavaScript</h1>
+		<div id="progress4"></div>
+
+		<h1>Bootstrap</h1>
+		<div id="progress5"></div>
+
+	</div>
+
+
+
+	<!-- jquery js1 -->
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+	<!-- jquery ui js1 -->
+	<script src="./libs/jquery-ui-1.13.1/jquery-ui.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			// console.log("hay");
+
+			$("#progress1").progressbar({
+				value:30
+			});
+
+			$("#progress2").progressbar({
+				value:20
+			});
+
+			$("#progress3").progressbar({
+				value:80
+			}).css({
+				"background-color":"#f4f4f4"
+			});
+
+			$("#progress3 > div").css("background-color","steelblue");
+
+			$("#progress4").css({
+				height:"20px",
+				backgroundColor:"#e2e2e2"
+			}).progressbar({
+				value:40
+			});
+
+			$("#progress4 > div").css("background-color","orange");
+
+			$("#progress5").progressbar({
+				value:45
+
+			}).css({
+				// "background":"linear-gradient(silver,grey)"
+
+				"background":"url('./img/arrow.png')",
+				"background-repeat":"repeat-x",
+				"background-size":"80px",
+				"background-position":"center"
+			});
+
+			$("#progress5 > div").css("background-color", "skyblue");
+
+		});
+
+	</script>
+
+</body>
+
+</html>

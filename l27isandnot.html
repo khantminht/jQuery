@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>is & not Methods</title>
+	<style type="text/css">
+		
+		body{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container{
+			width: 500px;
+			background: #f4f4f4;
+			padding: 20px;
+
+			display: flex;
+		}
+
+		.box{
+			width: 100px;
+			height: 300px;
+			background-color: green;
+
+			margin: 0 10px;
+		}
+
+		.text-light{
+			color: #fff;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		
+		<div class="box">
+			<h4>1st</h4>
+		</div>
+
+		<div class="box">
+			<h3 class="text-light">2nd</h3>
+		</div>
+
+		<div class="box">
+			<h2>3rd</h2>
+		</div>
+
+		<div class="box">
+			<h3>
+				<span>4th</span>
+			</h3>
+		</div>
+
+	</div>
+
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			// console.log('hi');
+
+			//is method
+			// $(".container").click(function(){
+
+			// 	if($(".box").children().is("h3")){
+			// 		$(".box").children("h3").css("background","orange");
+			// 	}
+			// });
+
+			//not method
+			$(".container").click(function(){
+
+				if($(".box").children().is("h3")){
+					$(".box").children("h3").not(".text-light").css("background","violet");
+				}
+			});
+
+			//jQuery.isFunction(val)
+			//$.isFunction(val)
+
+			console.log(jQuery.isFunction(function(){}));
+			console.log($.isFunction(function(){}));
+			console.log(jQuery.isFunction(()=>{}));
+			console.log($.isFunction(()=>{}));
+
+			console.log($.isFunction([]));						//false
+
+			//jQuery.isArray(val)
+			console.log(jQuery.isArray([]));					//true
+			console.log($.isArray([]));							//true
+
+			//jQuery.isPlainObject(val)
+			// $.isPlainObject(val)
+
+			console.log(jQuery.isPlainObject({}));				//true
+			console.log($.isPlainObject({x:10,y:2}));			//true
+			console.log(jQuery.isPlainObject(Object()));		//true
+			console.log($.isPlainObject(new Object()));			//true
+
+
+			//jQuery.isEmptyObject(val)
+			//$.isEmptyObject(val)
+
+			console.log(jQuery.isEmptyObject({}));				//true
+			console.log($.isEmptyObject({}));					//true
+			console.log(jQuery.isEmptyObject({x:10,y:2}));		//false
+			console.log($.isEmptyObject({x:10,y:2}));			//false
+
+
+
+		});
+
+	</script>
+
+</body>
+</html>

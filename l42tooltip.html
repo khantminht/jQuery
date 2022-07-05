@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>tooltip method</title>
+
+	<!-- jQueryui css1 js1 -->
+	<link href="./libs/jquery-ui-1.13.1/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+
+		body{
+			height: 100vh;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container{
+			width: 500px;
+			background-color: #f4f4f4;
+			padding: 20px;
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<h3>How to jQuery Tooltip!!</h3>
+
+		<p><a href="#" id="ttone" title="This is tooltip of jQuery UI!">It is used </a>in conjunction with a cursor, when a user hovers the pointer over an item without clicking</p>
+
+	</div>
+
+
+	<!-- jquery js1 -->
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+	<!-- jquery ui css1 js1 -->
+	<script src="./libs/jquery-ui-1.13.1/jquery-ui.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$("#ttone").tooltip({
+				// show:2000,
+				// hide:3000
+
+				show:"fade",
+				// hide:"fade",
+
+				hide:{
+					effect:"fade",
+					duration:1500
+				},
+
+				// show:{
+				// 	effect:"bounce",
+				// 	duration:1500
+				// }
+
+				track:true,
+
+				// content:"This is jQuery UI. Thanks for using our libs",
+
+				content:function(){
+					return `<img src="./img/logo1.png" width="150px"/> <h5>This is our company logo</h5><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry</small>`
+				}
+			});
+
+
+
+		});
+
+
+	</script>
+
+</body>
+</html>
