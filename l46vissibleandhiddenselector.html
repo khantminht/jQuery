@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>:vissible and :hidden Selector</title>
+
+	<style type="text/css">
+		
+		body{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container{
+            width: 500px;
+        }
+
+		li{
+			padding: 5px;
+			margin-bottom: 5px;
+			border-radius: 10px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<ul>
+			<li>Red</li>
+			<li>Green</li>
+			<li>Blue</li>
+			<li></li>
+			<li>Pink</li>
+			<li>White</li>
+			<li></li>
+			<li>violet</li>
+		</ul>
+
+		<hr/>
+
+		<ol>
+			<li style="display: none;">Apple</li>
+			<li hidden>Orange</li>
+			<li></li>
+			<li></li>
+			<li style="opacity: 0;">Mango</li>
+			<li></li>
+			<li style="visibility: hidden;">Peach</li>
+		</ol>
+
+	</div>
+
+	<script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			// console.log("hi");
+
+            // :visible
+            // $("li:not(ul li)").css("background-color","skyblue");
+
+            // $(":visible").css("background-color","skyblue");
+            // $("ul li:visible").css("background-color","skyblue");
+
+            $("ol li:visible").css("background-color","skyblue");
+
+             $("ol li:visible").css("background-color","skyblue");
+
+
+            //  :hidden
+            $("ol li:hidden").show();
+
+			
+		});
+		
+	</script>
+
+</body>
+</html>
