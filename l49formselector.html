@@ -34,7 +34,6 @@
         .form-control{
             width: 100%;
             font-size: 16px;
-            background-color: #f4f4f4;
             border: none;
             outline: 0;
             border-bottom: 1px solid #999;
@@ -70,7 +69,15 @@
 <body>
 
     <div class="container">
-        <form action="" method="">
+
+        <!-- <img src="./img/logo1.png" alt="logo1">  -->
+        <!-- :image selector doesn't work for img tag -->
+
+        <form action="" method="" enctype="multipart/form-data">
+
+            <div>
+                <input type="image" src="./img/logo1.png" />
+            </div>
 
             <div class="form-group">
                 <label for="firstname">Firstname</label>
@@ -101,9 +108,24 @@
             
 
             <div class="form-group form-check">
-                <label for="">Genderr</label>
-                <input type="radio" name="favcolor" id="favcolorred" class="form-check-input" value="red" /><label for="favcolorred">Male</label>
-                <input type="radio" name="favcolorred" id="favcolorgn" class="form-check-input" value="green" /><label for="favcolorgn">Female</label>
+                <label for="">Gender</label>
+                <input type="radio" name="gender" id="male" class="form-check-input" value="0" /><label for="male">Male</label>
+                <input type="radio" name="gender" id="female" class="form-check-input" value="1" /><label for="female">Female</label>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select name="country" id="country" class="form-control">
+                    <option selected disabled>Choose Country</option>
+                    <option value="mm">Myanmar</option>
+                    <option value="th">Thailand</option>
+                    <option value="ido">Indonesia</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="nrc">NRC</label>
+                <input type="file" name="nrc" id="nrc" class="form-control" />
             </div>
 
            <div class="justify-content-end">
@@ -121,6 +143,133 @@
         $(document).ready(function(){
             // console.log('hi');
 
+            // $("input").css({
+            //     "background":"grey"
+            // });
+
+            $(":input").css({
+                "background":"#f4f4f4"
+            });
+
+            // :text
+            // $(":text").css({
+            //     "background":"#f4f4f4"
+            // });
+
+            // :password
+            // $(":password").css({
+            //     "background":"#f4f4f4"
+            // });
+
+            // checkbox
+            $(":checkbox").css({
+                "accent-color":"red"
+            });
+
+            // radio
+            $(":radio").css({
+                "accent-color":"red"
+            });
+
+            // checked for checkbox
+            // $("input[type=checkbox]").click(function(){
+            //     // console.log("hi");
+
+            //     if($("input[name=favcolor]").is(":checked")){
+            //         console.log("favcolor checked");
+            //     }else{
+            //         console.log("favcolor not yet checked");
+            //     }
+            // });
+
+            // $("input[type=checkbox]").click(function(){
+                
+            //     if($(this).val() === "red"){
+            //         console.log($(this).is(":checked") ? "My favourite color is red" : "Sorry red is not my fav Color");
+            //     }else if ($(this).val() === "green"){
+            //         console.log($(this).is(":checked") ? "My fav Color is green" : "Sorry green is not my fav Color");
+            //     }else if ($(this).val() === "blue"){
+            //         console.log($(this).is(":checked") ? "My fav Color is blue" : "Sorry blue is not my fav Color");
+            //     }
+            // });
+
+            
+            // checked for radio
+
+            // $("input[type=radio]").click(function(){
+            //     // console.log("gender checked");
+                
+            //     if($(this).is(":checked")){
+            //         console.log("gender checked");
+            //     }
+            // });
+
+            // $("input[type=radio]").click(function(){
+
+            //     if($(this).val() === "0"){
+            //         console.log("I am male");
+            //     }else{
+            //         console.log("I am female");
+            //     }
+            // })
+
+            // :selected
+            $("#country").change(function(){
+            //     // console.log("value changed");
+
+            //     var getcontry = $(this).val();
+            //     console.log(getcontry);
+
+            //     var getcontry = $(this).html();
+            //     console.log(getcontry);
+
+                // var getcountry = $(":selected");
+                // var getcountry = $("#country :selected");
+                var getcountry = $("#country option:selected");
+                console.log(getcountry.val());
+                console.log(getcountry.text());
+
+            });
+
+            // :file
+
+            $(":file").css({
+                "background-color":"yellow",
+                "border":"1px dashed red"
+            });
+
+
+            //:image
+            // $("img").css("width","100px");
+            $(":image").css("width","100px");
+
+            // :reset
+            $(":reset").css("background","orange");
+            $(":reset").click(function(e){
+                console.log("Hello I am reset Button")
+
+                e.preventDefault();
+            })
+
+
+            // :submit
+            $(":submit").css("background","violet");
+            $(":submit").click(function(e){
+                console.log("Hello I am submit Button")
+                
+                e.preventDefault();
+            })
+
+
+            // :button
+            $(":button").click(function(e){
+                console.log("Hello I am submit Button")
+                
+                e.preventDefault();
+            })
+            
+
+            
 
 
 
