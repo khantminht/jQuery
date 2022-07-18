@@ -127,10 +127,21 @@
                 <input type="file" name="nrc" id="nrc" class="form-control" />
             </div>
 
+            
+
+            <div class="form-group form-check">
+                <input type="checkbox" name="agree" id="agree" class="form-check-input" /><label for="agree">I agree all above regulations</label>
+            </div>
+
            <div class="justify-content-end">
                 <input type="reset" class="btn" value="Reset" />
-                <button type="submit" class="btn">Submit</button>
+                <button type="submit" class="btn" disabled>Submit</button>
            </div>
+
+           <div class="form-group" style="text-align: center;">
+                <span title="formember" >Already Register?? </span><a href="#" id="loginlink" title="formember"> Login Here</a>
+                <pre title="forthx">Thank you for paying attention</pre>
+            </div>
 
         </form>
     </div>
@@ -140,6 +151,10 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
+
+            // $("input").focus(function(){
+            //     $("label").fadeOut();
+            // })
             // console.log('hi');
 
             // $("input").css({
@@ -266,7 +281,34 @@
                 
                 e.preventDefault();
             })
-        
+
+            // $("#firstname").css("color","red");
+            // $("id").css("color","steelblue");
+
+            // $("[id]").css("color","red");
+            // $("[class]").css("color","red");
+
+            // $("[title]").css("color","steelblue");
+
+            // $("span[title]").css("color","steelblue");
+            // $("a[title]").css("color","skyblue");
+            // $("pre[title]").css("color","skyblue");
+
+            // $("[title='formember']").css("color","steelblue");
+            // $("[title='forthx']").css("color","steelblue");
+
+            $("pre[title='forthx']").css("color","steelblue");
+
+            // for agree
+            $("#agree").click(function(){
+
+                if($(this).is(":checked")){
+                    $("[type='submit']").removeAttr("disabled");
+                }else{
+                    $("[type='submit']").attr("disabled",true);
+                }
+            })
+
         });
 
 

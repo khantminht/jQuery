@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <ul class="colors"> 
+            <li title="redcolor">Red</li>
+            <Li title="greencolor">Green</Li>
+            <li title="bluecolor">Blue</li>
+        </ul>
+
+        <button id="btn">Show Single Color</button>
+    </div>
+    
+
+    <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $("#btn").click(function(){
+
+                // $("ul").children().each(function(idx){
+                //     // console.log(idx);
+                //     console.log($(this).text());
+                // });
+
+                $(".colors li").each(function(idx){
+                    var getindex = $(this).index();
+                    var gettext = $(this).text();
+                    var gettitle = $(this).attr("title");
+
+                    console.log(`index is ${getindex} and text is ${gettext} and value is ${gettitle}`);
+                });
+                
+                
+            });
+
+
+        });
+    </script>
+</body>
+</html>
