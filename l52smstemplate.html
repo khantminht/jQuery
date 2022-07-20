@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sms template - single</title>
+
+    <style type="text/css">
+
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            width: 500px;
+            background-color: #f4f4f4;
+            box-shadow: 0 5px 10px #999;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .form-group{
+            margin-bottom: 10px;
+        }
+
+        .form-group label{
+            display: block;
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .form-control{
+            width: 100%;
+            font-size: 18px;
+            border: none;
+            border: 1px solid #999;
+
+            padding: 5px;
+        }
+
+        .justify-content-end{
+            display: flex;
+            justify-content: end;
+        }
+
+        #message{
+            resize: none;
+            /* resize: horizontal; */
+            /* resize: vertical; */
+        }
+
+        .btn{
+            background: none;
+            font-size: 16px;
+            border: 1px solid #999;
+            border-radius: 12px;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <form action="" method="">
+
+            <div class="form-group">
+                <label for="number">Mobile Number (Single-Number)</label>
+                <input type="text" name="number" id="number" class="form-control" placeholder="+95 9000000000" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" class="form-control" rows="5" placeholder="Enter Your SMS" disabled></textarea>
+
+                <span id="charcounts"></span><span> Characters are remaining.</span><span>(</span><b id="totalsms" style="color: steelblue;"> 0</b><span>/5 SMS)</span>
+            </div>
+
+            <div class="from-group justify-content-end">
+                <button type="submit" class="btn" disabled>Send</button>
+            </div>
+
+
+        </form>
+
+    </div>
+    
+
+
+    <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+            // console.log("hi");
+
+            $("#message").attr("maxlength",100);
+
+            var maxlength = $("#message").attr("maxlength");
+
+            $("#charcounts").text(maxlength);
+
+
+            $("#number").keyup(function(){
+
+                if($.trim($(this).val()) !== "" && $.trim($(this).val().length) >=9 ){
+                    $("#message").removeAttr("disabled");
+                }else{
+                    $("#message").attr("disabled",true);
+                    $("[type=submit]").attr("disabled",true);
+                }
+            });
+
+            $("form").submit(function(e){
+
+                var getdatas= {
+                    number: $("#number").val(),
+                    message: $("#message").val()
+                }
+                console.log(getdatas);
+
+                e.preventDefault();
+            })
+
+
+            $("#message").keyup(function(){
+
+                var getsmslength = $(this).val().length;
+                // console.log(getsmslength);
+
+                var remainingchars = maxlength - getsmslength;
+
+                $("#charcounts").html(`<b style="color:red;">${remainingchars}<b>`);
+
+
+                if(getsmslength === 0){
+                    $("#totalsms").text("0");
+                }else if(getsmslength <= 20){
+                    $("#totalsms").text("1");
+                }else if(getsmslength <= 40){
+                    $("#totalsms").text("2");
+                }else if(getsmslength <= 60){
+                    $("#totalsms").text("3");
+                }else if(getsmslength <= 80){
+                    $("#totalsms").text("4");
+                }else{
+                    $("#totalsms").text("5");
+                }
+
+                if($.trim($(this).val()) !== ""){
+                    $("[type=submit]").removeAttr("disabled");
+                }else{
+                    $("[type=submit]").attr("disabled",true);
+                }
+            });
+
+
+
+        })
+
+    </script>
+
+</body>
+</html>
