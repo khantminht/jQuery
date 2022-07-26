@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clipboard</title>
+
+    <style type="text/css">
+
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            width: 750px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px #999;
+
+            padding: 18px 20px;
+        }
+
+        .form-group label{
+            display: block;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .form-control{
+            width: 85%;
+            font-size: 18px;
+            border: 1px solid #999;
+            border-radius: 8px;
+            
+            padding: 5px 8px;
+            margin-bottom: 16px;
+        }
+
+        
+        .btn{
+            width: 13%;
+            font-size: 16px;
+            border: 1px solid #999;
+            border-radius: 7px;
+            
+            padding: 5px 8px;
+            margin-bottom: 16px;
+            
+            transition: all 0.3s;
+        }
+
+        .btn:hover{
+            color: #fff;
+            background-color: darkcyan;
+            border-radius: 13px;
+        }
+
+        .tooltip{
+            position: relative;
+        }
+
+        /* Start Tooltip */
+        .tooltip .tooltiptext{
+            width: 150px;
+            color: #fff;
+            background-color: #555;
+            border-radius: 8px;
+
+            padding: 5px;
+
+            position: absolute;
+            left: 50%;
+            bottom: 130%;
+            z-index: 10;
+
+            margin-left: -75px;
+            opacity: 0;
+            
+            transition: all 0.3s;
+        }
+
+        .tooltip .tooltiptext::before{
+            content: "";
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+            
+            position: absolute;
+            top: 100%;
+            left: 50%;
+
+            margin-left: -2.5px;
+        }
+
+        .tooltip:hover .tooltiptext{
+            opacity: 1;
+        }
+
+        .row{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* End Tooltip */
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="" method="">
+
+            <div class="form-group">
+                <label for="link">Get Link</label>
+
+                <div class="row">
+                    <input type="text" name="link" id="link" class="form-control" value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+                    <button type="submit" class="btn tooltip">
+                        <span id="mytooltip" class="tooltiptext">Copy to clipboard</span>Copy URL
+                    </button>
+                </div>
+
+            </div>
+
+           
+
+
+        </form>
+    </div>
+    
+    <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            
+            $(".btn").click(function(e){
+
+                var getinput = $("#link");
+
+                getinput.select();
+                
+                navigator.clipboard.writeText(getinput.val());
+
+                $("#mytooltip").text("Copied:"+ getinput.val().substring(0,15)+"..");
+
+                e.preventDefault();
+            })
+
+
+
+
+        });
+    </script>
+</body>
+</html>
+
+
+
