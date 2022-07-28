@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Three View</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style type="text/css">
+
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container{
+        width: 600px;
+    }
+
+    .browserpannel{
+        background: #f4f4f4;
+        border: 3px solid #f4f4f4;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .tabbar{
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .dot{
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+
+        margin: 2px;
+        display: inline-block;
+    }
+
+    .dot1{
+        background-color: red;
+    }
+
+    .dot2{
+        background-color: yellow;
+    }
+
+    .dot3{
+        background-color: #51db74;
+    }
+
+    .content{
+        padding: 0 20px;
+        padding-bottom: 10px;
+    }
+    
+    ul{
+        list-style: none;
+    }
+
+    li{
+        margin-bottom: 5px;
+    }
+
+    .bigcup{
+        cursor: pointer;
+    }
+
+    .bigcup::before{
+        content: "\25B6";
+        font-family: "Font Awesome 5Free";
+
+        /* color: red; */
+        margin-right: 6px;
+        display: inline-block;
+    }
+
+    .bigcup.go-down::before{
+        transform: rotate(90deg);
+        margin-right: 6px;
+    }
+
+    .nested{
+        display: none;
+    }
+
+    .active{
+        display: block;
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="browserpannel">
+
+            <div class="tabbar">
+                <span class="dot dot1"></span>
+                <span class="dot dot2"></span>
+                <span class="dot dot3"></span>
+            </div>
+
+            <div class="content">
+
+                <h3>Ms. July</h3>
+                <p>Chief Technology Officer</p>
+
+                <ul>
+                    <li> <span class="bigcup">Summary Bio</span>
+                        
+                        <ul class="nested">
+                            <li>Age: 35</li>
+                            <li>Marital Status: Married</li>
+                            <li>Nationality: Japanese</li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+                <ul>
+                    <li> <span class="bigcup">Working Experience</span>
+
+                        <ul class="nested">
+                            <li><span class="bigcup">2020</span>
+                                <ul class="nested">
+                                    <li>2020 - Project Director At SUDO Technology Co.,Ltd</li>
+                                    <li>2018 - Project Director At BarBo Technology Co.,Ltd</li>
+
+                                    <li><span class="bigcup">2015</span>
+                                        <ul class="nested">
+                                            <li>2013 - Project Director At UIKI Technology Co.,Ltd</li>
+                                            <li>2010 - Project Director At AI Mulie Technology Co.,Ltd</li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $(".bigcup").click(function(){
+
+                $(this).toggleClass("go-down");
+                $(this).siblings().toggleClass("active");
+            })
+        
+        })
+    </script>
+</body>
+</html>
