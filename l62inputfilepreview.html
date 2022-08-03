@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Files Preview</title>
+
+    <style type="text/css">
+    
+    *{
+        box-sizing: border-box;
+    }
+
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container{
+        width: 700px;
+        background-color: #f4f4f4;
+        border-radius: 15px;
+        box-shadow: 0 5px 10px #999;
+        padding: 20px;
+    }
+
+    form{
+        margin: 20px;
+    }
+
+    .form-group label{
+        display: block;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .form-control{
+        width: 100%;
+    }
+
+    .justify-content-end{
+        display: flex;
+        justify-content: end;
+        margin-bottom: 10px;
+    }
+
+    .gallery{
+        width: 100%;
+        background-color: #eee;
+        border: 1px dashed #999;
+        border-radius: 7px;
+        color: #aaa;
+        text-align: center;
+
+        padding: 30px 10px;
+    }
+
+    .removetxt span{
+        display: none;
+    }
+
+    .gallery img{
+        width: 150px;
+        height: 100px;
+        border: 2px dashed #aaa;
+        border-radius: 10px;
+
+        object-fit: cover;
+        padding: 5px;
+        margin: 0 10px;
+    }
+
+    .btn{
+        font-size: 14px;
+        color: #fff;
+        background: steelblue;
+        border: 1px solid #999;
+        border-radius: 8px;
+        padding: 5px 8px;
+        transition: all 0.3s;
+    }
+
+    .btn:hover{
+        color: #000;
+        background-color: transparent;
+    }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <form action="" method="" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="coverphotos">Cover Photo</label>
+                <input type="file" name="coverphotos[]" id="coverphotos" class="form-control" multiple />
+            </div>
+
+            <div class="justify-content-end">
+                <button type="button" class="btn">Upload</button>
+            </div>
+
+            <div class="gallery">
+                <span>Choose Images</span>
+            </div>
+
+        </form>
+    </div>
+    
+
+    <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            // console.log("hi");
+
+            var previewimages = function(input,output){
+
+                if(input.files){
+
+                    var totalfiles = input.files.length;
+                    console.log(totalfiles);
+
+                    if(totalfiles>0){
+                        $(".gallery").addClass("removetxt");
+                    }else{
+                        $(".gallery").removeClass("removetxt");
+                    }
+
+                    for(var i=0; i<totalfiles; i++){
+
+                        var filereader= new FileReader();
+
+                        filereader.onload = function(e){
+                            $($.parseHTML("<img/>")).attr("src",e.target.result).appendTo(output);
+                        }
+
+                        filereader.readAsDataURL(input.files[i]);
+                    }
+                }
+            };
+
+            $("#coverphotos").change(function(){
+                previewimages(this,'.gallery');
+            });
+
+
+        });
+
+    </script>
+
+</body>
+</html>

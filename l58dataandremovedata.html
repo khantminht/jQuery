@@ -47,6 +47,9 @@
 
             <button type="button" class="attrid-btn" data-id="123456">Attribute ID</button>
             <button type="button" class="dataid-btn" data-id="654321">Data ID</button>
+
+            <button type="button" class="obj-btn">Object</button>
+            <button type="button" class="inc-btn" data-id="1">Increase Id</button>
         </div>
 
     </div>
@@ -109,6 +112,67 @@
                 $(this).data("id",543216);
                 getdataid = $(this).data("id");
                 console.log(getdataid, typeof getdataid);   //return string
+            })
+
+            $(".obj-btn").click(function(){
+
+                $("div").data("info",{
+                    objname:"Ms July",
+                    objage:35,
+                    objphone:"09448154608"
+                });
+
+                $("ul li span:eq(0)").text($("div").data("info").objname);
+                $("ul li span:eq(1)").text($("div").data("info").objage);
+                $("ul li span:eq(2)").text($("div").data("info").objphone);
+
+            })
+
+            $(".inc-btn").click(function(){
+
+                // var getidmethod1 = $(this).data("id");
+                // console.log(getidmethod1);
+
+                // var getidmethod2 = $(this).data().id;
+                // console.log(getidmethod2);
+
+                // var getidmethod3 = $(this).data()["id"];
+                // console.log(getidmethod3);
+
+        //---------------------------------------------------------------------------//
+
+                // var incidmethod1 = $(this).data().id;
+                // console.log(incidmethod1);
+                // incidmethod1++;
+                // $(this).data("id",incidmethod1);
+
+                // var incidmethod1 = $(this).data("id");
+                // console.log(incidmethod1);
+                // incidmethod1 += 1;
+                // $(this).data("id",incidmethod1);
+
+        //---------------------------------------------------------------------------//
+
+                // var incidmethod2 = $(this).data().id++;
+                // console.log(incidmethod2);
+
+         //---------------------------------------------------------------------------//
+
+                // var incidmethod3 = $(this).data()["id"];
+                // console.log(incidmethod3);
+                // incidmethod3++;
+                // $(this).data("id",incidmethod3);
+
+                 // var incidmethod2 = $(this).data()["id"]++;
+                // console.log(incidmethod2);
+
+                var incidmethod3 = $(this).data()["id"];
+                console.log(incidmethod3);
+                incidmethod3 += 1;
+                $(this).data("id",incidmethod3);
+
+         //---------------------------------------------------------------------------//
+
             })
            
 

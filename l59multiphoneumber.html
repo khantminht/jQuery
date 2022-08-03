@@ -26,6 +26,10 @@
             padding: 15px;
         }
 
+        .form-group{
+            display: block;
+        }
+
         .form-control{
             width: 87%;
             font-size: 15px;
@@ -35,7 +39,7 @@
             margin: 5px 0;
         }
 
-        .addbtn{
+        .addbtn, .removebtn{
             color: #fff;
             font-size: 12px;
             background-color: green;
@@ -44,6 +48,10 @@
 
             padding: 8px 10px;
             margin: 5px 10px;
+        }
+
+        .removebtn{
+            background-color: red;
         }
 
     </style>
@@ -58,6 +66,7 @@
         <form action="" method="">
 
             <div class="form-group phonenumbers">
+                <label for="phones">Enter Your Mobile Numbers</label>
                 <input type="text" name="phones[]" id="phones" class="form-control" /><a href="javascript:void(0)" class="addbtn"><i class="fas fa-plus"></i></a>
             </div>
 
@@ -76,15 +85,54 @@
 
             var maxnumber = 5;
             var addbtn = $(".addbtn");
-            var phonebox = $(".phonenumber");
+            var phonebox = $(".phonenumbers");
+            var newphoneel;
+            var x = 1;
 
             //ADD
 
             $(addbtn).click(function(){
-                console.log("iam working")
-            })
+                // console.log("iam working")
 
-        })
+                if( x < maxnumber){
+                    x++;
+
+                    newphoneel = ` <div><input type="text" name="phones[]" id="phones${x}" class="form-control" /><a href="javascript:void(0)" class="removebtn"><i class="fas fa-trash-alt"></i></a></div>`;
+
+                    $(phonebox).append(newphoneel);
+
+
+                }else{
+                    $(this).html(`<i class="fas fa-trash-alt"></i>`);
+
+                    $(this).addClass(".removebtn");
+                    $(this).css({
+                        "background-color":"red"
+                    });
+                }
+            });
+
+
+            //Remove
+
+            $(phonebox).on("click",".removebtn",function(){
+                // console.log("hi");
+
+                $(this).parent().remove();
+                x--;
+
+                if(x < 5){
+                    $(addbtn).html(`<i class="fas fa-plus"></i>`);
+                    $(addbtn).css({
+                        "background-color":"green"
+                    });
+                }
+                
+            });
+
+
+        });
+
 
     </script>
 </body>
